@@ -11,11 +11,4 @@ RUN add-apt-repository -y ppa:gophers/go
 RUN apt-get update && apt-get install -y golang-stable
 RUN apt-get autoremove -y python-software-properties software-properties-common && rm -rf /var/lib/apt/lists/*
 # 创建默认代码路径
-RUN mkdir -p /code
-VOLUME ["/code"]
-# 默认暴露80端口
-EXPOSE  80
-# 配置supervisord
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-# 启动supervisord
-CMD ["/usr/bin/supervisord"]
+RUN mkdir $HOME/golang && export GOPATH=$HOME/golang && export PATH=$PATH:$GOPATH/bin
