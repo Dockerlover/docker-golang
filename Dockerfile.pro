@@ -1,10 +1,7 @@
-# 基础镜像 
-FROM docker-python
+# 基础镜像
+FROM docker-python:pro
 # 维护人员
 MAINTAINER  liuhong1.happy@163.com
-# 添加环境变量
-ENV USER_NAME admin
-ENV SERVICE_ID golang
 # 安装golang
 RUN apt-get update && apt-get install -y python-software-properties software-properties-common
 RUN add-apt-repository -y ppa:gophers/go
